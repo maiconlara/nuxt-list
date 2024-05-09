@@ -4,6 +4,9 @@ import type { Config } from "tailwindcss";
 export default <Partial<Config>>{
   theme: {
     extend: {
+      fontFamily: {
+        nunito: ["Nunito", "sans-serif"],
+      },
       colors: {
         title: "#ce7f54",
         white: "#f5f7fa",
