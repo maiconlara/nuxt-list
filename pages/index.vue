@@ -1,5 +1,16 @@
 <template>
-    <div class="flex flex-col items-center justify-center w-full h-screen">
-       
-    </div>
+       <TaskForm />
 </template>
+
+<script>
+import TaskForm from '@/components/TaskForm.vue'
+
+export default {
+  layout: 'default',
+  name: 'test',
+  components: {
+    TaskForm
+  },
+  
+};
+</script>
