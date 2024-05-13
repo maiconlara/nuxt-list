@@ -10,7 +10,6 @@ export default <Partial<Config>>{
       colors: {
         title: "#ce7f54",
         white: "#f5f7fa",
-        default: "#273248",
         accent: "#a13334",
         red: {
           "50": "#fcf4f4",
