@@ -2,16 +2,18 @@
   <div class="flex flex-col items-center justify-center w-[70vw]">
     <fieldset class="flex flex-row items-center justify-center w-[600px] gap-4">
       <UInput
-        class="w-full transition-colors  "
+        class="w-full transition-colors"
         inputClass="h-10 rounded-full w-full py-0 bg-blue-100 dark:bg-blue-800"
         color="primary"
+        size="xl"
         v-model="name"
         icon="i-heroicons-chat-bubble-bottom-center-text-16-solid"
         placeholder="Descreva a tarefa..."
       />
       <UButton
+        v-bind:disabled="taskNameLength < 3"
         icon="i-heroicons-plus-16-solid"
-        class="rounded-full transition-colors"
+        class="rounded-full h-10 w-10 items-center justify-center transition-colors"
         color="primary"
         square
         variant="solid"
@@ -36,7 +38,13 @@ export default {
       status: TaskStatusEnum.PENDING,
     };
   },
-  
+
+  computed: {
+    taskNameLength() {
+      return this.name.length;
+    },
+  },
+
   methods: {
     async addTask() {
       try {
@@ -46,6 +54,7 @@ export default {
           created_at: this.created_at,
         };
         const id = await db.tasks.add(newTask);
+        this.name = "";
       } catch (error) {
         console.log(error);
       }
